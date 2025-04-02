@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Bank - Lingua Nova</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono&family=Playfair+Display:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        /* Page-specific styles */
+        .language-bank-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--secondary);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-container input, 
+        .search-container select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: var(--body-font);
+        }
+        
+        .search-container input {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
+        .filter-group select {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .word-list table, 
+        .grammar-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .word-list th, 
+        .word-list td,
+        .grammar-list th,
+        .grammar-list td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .word-list th,
+        .grammar-list th {
+            background-color: var(--light);
+            font-weight: 600;
+        }
+        
+        .pronunciation {
+            font-family: var(--mono-font);
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        .grammar-example {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .word-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: var(--secondary);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .pagination-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border-color);
+            background: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: var(--body-font);
+            transition: all 0.3s;
+        }
+        
+        .pagination-btn:hover:not(:disabled) {
+            background-color: var(--light);
+        }
+        
+        .pagination-btn.active {
+            background-color: var(--accent);
+            color: var(--light);
+            border-color: var(--accent);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination-ellipsis {
+            padding: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .loading-indicator {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--light);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-header container">
+            <h1>Language Bank</h1>
+            <p class="lead">Explore the vocabulary and grammar of Lingua Nova.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="language-bank-tabs">
+                <button class="tab-btn active" data-tab="word-bank">Word Bank</button>
+                <button class="tab-btn" data-tab="grammar-bank">Grammar Bank</button>
+            </div>
+            
+            <div id="word-bank" class="tab-content active">
+                <div class="search-container">
+                    <input type="text" id="word-search" placeholder="Search for words or definitions...">
+                    <div class="filter-group">
+                        <select id="category-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                        <select id="pos-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                        <select id="difficulty-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="word-stats">
+                    <span>Showing <span id="total-words-count">0</span> words</span>
+                    <a href="../assets/data/word-bank.json" download>Download Word Bank</a>
+                </div>
+                
+                <div id="loading-indicator" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading word data...</p>
+                </div>
+                
+                <div class="word-list">
+                    <table id="word-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Part of Speech</th>
+                                <th>Definition</th>
+                                <th>Example</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="word-table-body">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="word-pagination" class="pagination">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="grammar-bank" class="tab-content">
+                <div class="search-container">
+                    <input type="text" id="grammar-search" placeholder="Search grammar rules...">
+                    <div class="filter-group">
+                        <select id="grammar-category-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                        <select id="grammar-difficulty-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="grammar-loading-indicator" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading grammar data...</p>
+                </div>
+                
+                <div id="grammar-content" class="grammar-list">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/word-bank.js"></script>
+    <script src="../assets/js/grammar-bank.js"></script>
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Word search functionality
+            const wordSearch = document.getElementById('word-search');
+            const categoryFilter = document.getElementById('category-filter');
+            const posFilter = document.getElementById('pos-filter');
+            const difficultyFilter = document.getElementById('difficulty-filter');
+            const wordRows = document.querySelectorAll('.word-list tbody tr');
+            
+            function filterWords() {
+                const searchTerm = wordSearch.value.toLowerCase();
+                const category = categoryFilter.value;
+                const pos = posFilter.value;
+                const difficulty = difficultyFilter.value;
+                
+                wordRows.forEach(row => {
+                    const term = row.cells[0].textContent.toLowerCase();
+                    const translation = row.cells[1].textContent.toLowerCase();
+                    const rowCategory = row.cells[2].textContent.toLowerCase();
+                    
+                    const matchesSearch = term.includes(searchTerm) || 
+                                         translation.includes(searchTerm);
+                    const matchesCategory = category === 'all' || 
+                                           rowCategory.toLowerCase().includes(category.toLowerCase());
+                    const matchesPos = pos === 'all' || 
+                                       row.cells[1].textContent.toLowerCase().includes(pos.toLowerCase());
+                    const matchesDifficulty = difficulty === 'all' || 
+                                               row.cells[3].textContent.toLowerCase().includes(difficulty.toLowerCase());
+                    
+                    if (matchesSearch && matchesCategory && matchesPos && matchesDifficulty) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (wordSearch) {
+                wordSearch.addEventListener('input', filterWords);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', filterWords);
+            }
+            
+            if (posFilter) {
+                posFilter.addEventListener('change', filterWords);
+            }
+            
+            if (difficultyFilter) {
+                difficultyFilter.addEventListener('change', filterWords);
+            }
+            
+            // Grammar search functionality
+            const grammarSearch = document.getElementById('grammar-search');
+            const grammarCategoryFilter = document.getElementById('grammar-category-filter');
+            const grammarDifficultyFilter = document.getElementById('grammar-difficulty-filter');
+            const grammarSections = document.querySelectorAll('.grammar-list h3');
+            
+            function filterGrammar() {
+                if (!grammarSearch || !grammarCategoryFilter || !grammarDifficultyFilter) return;
+                
+                const searchTerm = grammarSearch.value.toLowerCase();
+                const category = grammarCategoryFilter.value;
+                const difficulty = grammarDifficultyFilter.value;
+                
+                grammarSections.forEach(section => {
+                    const title = section.textContent.toLowerCase();
+                    const content = section.nextElementSibling.textContent.toLowerCase();
+                    const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
+                    
+                    // Simple category matching based on section title
+                    const matchesCategory = category === 'all' || 
+                                           title.includes(category.toLowerCase());
+                    
+                    const matchesDifficulty = difficulty === 'all' || 
+                                               content.includes(difficulty.toLowerCase());
+                    
+                    if (matchesSearch && matchesCategory && matchesDifficulty) {
+                        section.style.display = '';
+                        let el = section.nextElementSibling;
+                        while (el && el.tagName !== 'H3') {
+                            el.style.display = '';
+                            el = el.nextElementSibling;
+                        }
+                    } else {
+                        section.style.display = 'none';
+                        let el = section.nextElementSibling;
+                        while (el && el.tagName !== 'H3') {
+                            el.style.display = 'none';
+                            el = el.nextElementSibling;
+                        }
+                    }
+                });
+            }
+            
+            if (grammarSearch) {
+                grammarSearch.addEventListener('input', filterGrammar);
+            }
+            
+            if (grammarCategoryFilter) {
+                grammarCategoryFilter.addEventListener('change', filterGrammar);
+            }
+            
+            if (grammarDifficultyFilter) {
+                grammarDifficultyFilter.addEventListener('change', filterGrammar);
+            }
+        });
+    </script>
+</body>
+</html> 

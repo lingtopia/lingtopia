@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors - Lingua Nova</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono&family=Playfair+Display:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        /* Page-specific styles */
+        .contributors-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--secondary);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .contributor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .contributor-card {
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contributor-image {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light);
+        }
+        
+        .contributor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .contributor-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .contributor-name {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contributor-role {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .contributor-bio {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .contributor-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .contributor-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .contributor-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .twitter-contributors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .twitter-contributor {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .twitter-handle {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .twitter-handle:hover {
+            text-decoration: underline;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 992px) {
+            .contributor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .twitter-contributors {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contributor-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .twitter-contributors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .twitter-contributors {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-header container">
+            <h1>Contributors</h1>
+            <p class="lead">Meet the team behind Lingua Nova and our community of contributors.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="contributors-tabs">
+                <button class="tab-btn active" data-tab="core-team">Core Contributors</button>
+                <button class="tab-btn" data-tab="community-contributors">Community Contributors</button>
+            </div>
+            
+            <div id="core-team" class="tab-content active">
+                <div id="core-contributors-loading" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading core contributors data...</p>
+                </div>
+                
+                <div id="core-contributors-container">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="community-contributors" class="tab-content">
+                <p>Our language continues to evolve thanks to the contributions of our dedicated community members.</p>
+                
+                <div class="contributors-filter-container">
+                    <label for="contributors-filter">Filter by area:</label>
+                    <select id="contributors-filter">
+                        <!-- Will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <div id="contributors-loading" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading contributors data...</p>
+                </div>
+                
+                <div id="contributors-leaderboard" class="contributors-leaderboard">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div class="join-cta">
+                    <h3>Join Our Community</h3>
+                    <p>Interested in contributing to Lingua Nova? We welcome linguists, language enthusiasts, developers, and anyone passionate about language creation.</p>
+                    <a href="community.html#join" class="btn primary">Get Involved</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/contributors.js"></script>
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

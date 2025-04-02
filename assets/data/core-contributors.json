@@ -1,0 +1,41 @@
+{
+  "contributors": [
+    {
+      "id": "cc001",
+      "name": "Dr. Elena Petrova",
+      "role": "Project Lead",
+      "image": "../assets/images/contributors/elena.jpg",
+      "bio": "Linguistics professor with a specialization in constructed languages and cross-cultural communication.",
+      "contributions": "Project vision, grammatical framework, and academic outreach.",
+      "links": {
+        "email": "elena@linguanova.org",
+        "twitter": "https://twitter.com/elenapetrova",
+        "website": "https://elenapetrova.com"
+      }
+    },
+    {
+      "id": "cc002",
+      "name": "Prof. Michael Chen",
+      "role": "Lead Linguist",
+      "image": "../assets/images/contributors/michael.jpg",
+      "bio": "Computational linguist with expertise in language acquisition and semantic structures.",
+      "contributions": "Vocabulary development, phonological system, and teaching methodology.",
+      "links": {
+        "email": "michael@linguanova.org",
+        "github": "https://github.com/michaelchen"
+      }
+    },
+    {
+      "id": "cc003",
+      "name": "Dr. Sophia Rodriguez",
+      "role": "Cultural Advisor",
+      "image": "../assets/images/contributors/sophia.jpg",
+      "bio": "Anthropologist specializing in cultural linguistics and indigenous language preservation.",
+      "contributions": "Cultural context, pragmatics, and cross-cultural adaptation.",
+      "links": {
+        "email": "sophia@linguanova.org",
+        "linkedin": "https://linkedin.com/in/sophiarodriguez"
+      }
+    }
+  ]
+} 

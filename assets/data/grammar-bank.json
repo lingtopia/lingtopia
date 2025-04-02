@@ -1,0 +1,93 @@
+{
+  "rules": [
+    {
+      "id": "g001",
+      "title": "Basic Sentence Structure",
+      "category": "syntax",
+      "difficulty": "beginner",
+      "description": "Lingua Nova follows a Subject-Verb-Object (SVO) word order, similar to English.",
+      "examples": [
+        {
+          "original": "Mi parla lingua.",
+          "translation": "I speak the language."
+        }
+      ],
+      "notes": "While SVO is the default order, other arrangements are possible for emphasis."
+    },
+    {
+      "id": "g002",
+      "title": "Noun Endings",
+      "category": "morphology",
+      "difficulty": "beginner",
+      "description": "All nouns end in -a (singular) or -as (plural).",
+      "examples": [
+        {
+          "original": "lingua",
+          "translation": "language"
+        },
+        {
+          "original": "linguas",
+          "translation": "languages"
+        }
+      ]
+    },
+    {
+      "id": "g003",
+      "title": "Verb Conjugation",
+      "category": "morphology",
+      "difficulty": "intermediate",
+      "description": "Verbs are conjugated by adding suffixes to the verb stem.",
+      "table": {
+        "headers": ["Tense", "Suffix", "Example"],
+        "rows": [
+          ["Present", "-a", "parla (speak)"],
+          ["Past", "-av", "parlav (spoke)"],
+          ["Future", "-ar", "parlar (will speak)"],
+          ["Conditional", "-ari", "parlari (would speak)"]
+        ]
+      }
+    },
+    {
+      "id": "g004",
+      "title": "Question Formation",
+      "category": "syntax",
+      "difficulty": "beginner",
+      "description": "Questions are formed by adding the particle 'ka' at the beginning of a sentence.",
+      "examples": [
+        {
+          "original": "Ka tu parla Lingua Nova?",
+          "translation": "Do you speak Lingua Nova?"
+        },
+        {
+          "original": "Ka tu fu veni?",
+          "translation": "Will you come?"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "syntax",
+    "morphology",
+    "phonology",
+    "pragmatics",
+    "semantics",
+    "orthography"
+  ],
+  "difficulties": [
+    "beginner",
+    "intermediate",
+    "advanced"
+  ],
+  "sections": [
+    {
+      "id": "s001",
+      "title": "Sentence Structure",
+      "rules": ["g001", "g004"]
+    },
+    {
+      "id": "s002",
+      "title": "Word Formation",
+      "rules": ["g002", "g003"]
+    }
+  ]
+} 

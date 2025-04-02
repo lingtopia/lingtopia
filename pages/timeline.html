@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Timeline - Lingua Nova</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono&family=Playfair+Display:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        /* Page-specific styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+        
+        /* Default state - very subtle, almost transparent */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: rgba(247, 250, 252, 0.5);
+            border: 4px solid rgba(237, 242, 247, 0.5);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: rgba(247, 250, 252, 0.7);
+            position: relative;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(237, 242, 247, 0.7);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Hover state - fully visible and prominent */
+        .timeline-item:hover::after {
+            background-color: var(--background);
+            border-color: var(--accent);
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(45, 55, 72, 0.2);
+        }
+        
+        .timeline-item:hover .timeline-content {
+            background-color: var(--background);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+        
+        .timeline-item:hover .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .timeline-item:hover .timeline-title {
+            color: var(--primary);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        /* Arrow indicators - subtle by default */
+        .left .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid rgba(247, 250, 252, 0.7);
+            top: 25px;
+            right: -10px;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .left .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            border-left: 11px solid rgba(237, 242, 247, 0.7);
+            top: 24px;
+            right: -11px;
+            transition: all 0.4s ease;
+        }
+        
+        .right .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid rgba(247, 250, 252, 0.7);
+            top: 25px;
+            left: -10px;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .right .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            border-right: 11px solid rgba(237, 242, 247, 0.7);
+            top: 24px;
+            left: -11px;
+            transition: all 0.4s ease;
+        }
+        
+        /* Update arrow colors on hover */
+        .left:hover .timeline-content::after {
+            border-left-color: var(--background);
+        }
+        
+        .left:hover .timeline-content::before {
+            border-left-color: var(--accent);
+        }
+        
+        .right:hover .timeline-content::after {
+            border-right-color: var(--background);
+        }
+        
+        .right:hover .timeline-content::before {
+            border-right-color: var(--accent);
+        }
+        
+        .timeline-date {
+            font-weight: 500;
+            color: rgba(74, 85, 104, 0.7);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-title {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: rgba(26, 32, 44, 0.7);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-description {
+            margin-bottom: 0;
+            color: rgba(26, 32, 44, 0.8);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-item:hover .timeline-description {
+            color: var(--primary);
+        }
+        
+        .timeline-milestone {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: rgba(247, 250, 252, 0.7);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: rgba(74, 85, 104, 0.7);
+            font-style: italic;
+            border: 1px solid rgba(237, 242, 247, 0.7);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-item:hover .timeline-milestone {
+            background-color: var(--accent);
+            color: var(--light);
+            border-color: var(--accent);
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Responsive timeline */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .left .timeline-content::after,
+            .left .timeline-content::before {
+                display: none;
+            }
+            
+            .right .timeline-content::after {
+                border-right: 10px solid rgba(247, 250, 252, 0.7);
+                left: -10px;
+            }
+            
+            .right .timeline-content::before {
+                border-right: 11px solid rgba(237, 242, 247, 0.7);
+                left: -11px;
+            }
+            
+            .right:hover .timeline-content::after {
+                border-right-color: var(--background);
+            }
+            
+            .right:hover .timeline-content::before {
+                border-right-color: var(--accent);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-header container">
+            <h1>Development Timeline</h1>
+            <p class="lead">Tracking the evolution of Lingua Nova from concept to reality.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2021</div>
+                        <h3 class="timeline-title">Project Inception</h3>
+                        <p class="timeline-description">Initial concept development and research into linguistic frameworks. Formation of the core research team and establishment of project goals.</p>
+                        <span class="timeline-milestone">Milestone: Project Charter</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">March 2021</div>
+                        <h3 class="timeline-title">Phonological Framework</h3>
+                        <p class="timeline-description">Development of the sound system, focusing on cross-cultural accessibility and ease of pronunciation. Established 28 core phonemes.</p>
+                        <span class="timeline-milestone">Milestone: Phoneme Inventory</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 2021</div>
+                        <h3 class="timeline-title">Morphological Structure</h3>
+                        <p class="timeline-description">Creation of word-building rules and grammatical markers. Established agglutinative approach with regular affixation patterns.</p>
+                        <span class="timeline-milestone">Milestone: Morphology Guide</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2021</div>
+                        <h3 class="timeline-title">Syntax Development</h3>
+                        <p class="timeline-description">Formulation of sentence structure rules and word order conventions. Adopted a flexible SVO (Subject-Verb-Object) framework.</p>
+                        <span class="timeline-milestone">Milestone: Syntax Rulebook</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2021</div>
+                        <h3 class="timeline-title">Core Vocabulary</h3>
+                        <p class="timeline-description">Development of the first 500 essential words, focusing on universal concepts and everyday communication needs.</p>
+                        <span class="timeline-milestone">Milestone: First Dictionary</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">February 2022</div>
+                        <h3 class="timeline-title">First Academic Paper</h3>
+                        <p class="timeline-description">Publication of "Lingua Nova: A Novel Approach to Constructed Languages" in the Journal of Linguistic Innovation.</p>
+                        <span class="timeline-milestone">Milestone: Academic Recognition</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2022</div>
+                        <h3 class="timeline-title">Community Launch</h3>
+                        <p class="timeline-description">Public introduction of the project and establishment of online community platforms for contributors and enthusiasts.</p>
+                        <span class="timeline-milestone">Milestone: 50 Active Contributors</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">August 2022</div>
+                        <h3 class="timeline-title">Educational Materials</h3>
+                        <p class="timeline-description">Development of learning resources, including the first textbook and online course materials for beginners.</p>
+                        <span class="timeline-milestone">Milestone: Learning Platform</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">November 2022</div>
+                        <h3 class="timeline-title">Expanded Vocabulary</h3>
+                        <p class="timeline-description">Growth to 1,000+ words, including specialized terminology for academic, scientific, and cultural domains.</p>
+                        <span class="timeline-milestone">Milestone: Comprehensive Dictionary</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2023</div>
+                        <h3 class="timeline-title">First Translation Project</h3>
+                        <p class="timeline-description">Collaborative translation of selected literary works into Lingua Nova, testing the language's expressive capabilities.</p>
+                        <span class="timeline-milestone">Milestone: Literary Translation</span>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">April 2023</div>
+                        <h3 class="timeline-title">Digital Tools</h3>
+                        <p class="timeline-description">Launch of translation apps, keyboard layouts, and other digital resources to facilitate language use.</p>
+                        <span class="timeline-milestone">Milestone: Technology Integration</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Present</div>
+                        <h3 class="timeline-title">Ongoing Development</h3>
+                        <p class="timeline-description">Continuous refinement of the language based on user feedback, research findings, and practical applications.</p>
+                        <span class="timeline-milestone">Current Focus: Semantic Expansion</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/components.js"></script>
+</body>
+</html> 

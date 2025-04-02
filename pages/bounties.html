@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounty Program - Lingua Nova</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono&family=Playfair+Display:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <style>
+        /* Page-specific styles */
+        .bounty-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--secondary);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+        
+        .search-container input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: var(--body-font);
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .filter-group select {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: var(--body-font);
+            background-color: white;
+        }
+        
+        .bounty-card {
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .bounty-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .bounty-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .bounty-title {
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .bounty-reward {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .bounty-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .bounty-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .bounty-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .tag.difficulty-easy {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+        
+        .tag.difficulty-medium {
+            background-color: #FFF8E1;
+            color: #F57F17;
+        }
+        
+        .tag.difficulty-hard {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+        
+        .bounty-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .bounty-stats {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .apply-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--body-font);
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .apply-btn:hover {
+            background-color: #1A202C;
+        }
+        
+        .completed-bounty {
+            opacity: 0.8;
+        }
+        
+        .winner-info {
+            background-color: #F0F9FF;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+        }
+        
+        .winner-name {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .loading-indicator {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--light);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bounty-program-info {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .how-it-works {
+            margin-top: 3rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 992px) {
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .bounty-header {
+                flex-direction: column;
+            }
+            
+            .bounty-reward {
+                margin-top: 1rem;
+            }
+            
+            .bounty-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="page-header container">
+            <h1>Bounty Program</h1>
+            <p class="lead">Contribute to Lingua Nova and earn rewards for your work.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="bounty-program-info">
+                <h2>About the Bounty Program</h2>
+                <p>The Lingua Nova Bounty Program rewards contributors for completing specific tasks that help advance the language. Bounties range from creating vocabulary sets to developing tools and applications.</p>
+                <p>Rewards are paid in Lingua Nova Tokens (LNT), which can be exchanged for merchandise, learning materials, or converted to other currencies.</p>
+            </div>
+            
+            <div class="bounty-tabs">
+                <button class="tab-btn active" data-tab="active-bounties">Active Bounties</button>
+                <button class="tab-btn" data-tab="completed-bounties">Completed Bounties</button>
+                <button class="tab-btn" data-tab="how-it-works">How It Works</button>
+            </div>
+            
+            <div id="active-bounties" class="tab-content active">
+                <div class="search-container">
+                    <input type="text" id="bounty-search" placeholder="Search bounties...">
+                    <div class="filter-group">
+                        <select id="category-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                        <select id="difficulty-filter">
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="bounties-loading" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading bounties...</p>
+                </div>
+                
+                <div id="active-bounties-container">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="completed-bounties" class="tab-content">
+                <div id="completed-bounties-loading" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>Loading completed bounties...</p>
+                </div>
+                
+                <div id="completed-bounties-container">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="how-it-works" class="tab-content">
+                <h2>How the Bounty Program Works</h2>
+                <p>Our bounty program is designed to be straightforward and rewarding. Here's how you can participate:</p>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Find a Bounty</h3>
+                        <p>Browse the active bounties and find one that matches your skills and interests.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Submit Your Work</h3>
+                        <p>Complete the task according to the requirements and submit your work through the submission form.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Receive Rewards</h3>
+                        <p>If your submission is accepted, you'll receive the bounty reward in Lingua Nova Tokens (LNT).</p>
+                    </div>
+                </div>
+                
+                <h3>Submission Guidelines</h3>
+                <p>When submitting your work for a bounty, please ensure:</p>
+                <ul>
+                    <li>Your submission meets all the requirements specified in the bounty description</li>
+                    <li>Your work is original and does not infringe on any copyrights</li>
+                    <li>You include all necessary files and documentation</li>
+                    <li>You provide contact information for follow-up questions</li>
+                </ul>
+                
+                <h3>Review Process</h3>
+                <p>All submissions are reviewed by the Lingua Nova core team. The review process typically takes 1-2 weeks, and you'll be notified of the decision via email.</p>
+                
+                <h3>Reward Distribution</h3>
+                <p>Rewards are distributed within 7 days of a submission being accepted. LNT can be used within the Lingua Nova ecosystem or exchanged through our partners.</p>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#active-bounties" class="btn primary">View Active Bounties</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // DOM Elements
+            const activeBountiesContainer = document.getElementById('active-bounties-container');
+            const completedBountiesContainer = document.getElementById('completed-bounties-container');
+            const bountiesLoading = document.getElementById('bounties-loading');
+            const completedBountiesLoading = document.getElementById('completed-bounties-loading');
+            const bountySearch = document.getElementById('bounty-search');
+            const categoryFilter = document.getElementById('category-filter');
+            const difficultyFilter = document.getElementById('difficulty-filter');
+            
+            // Data storage
+            let bountyData = {};
+            let filteredBounties = [];
+            
+            // Fetch bounty data
+            async function fetchBountyData() {
+                try {
+                    showLoading(true);
+                    showCompletedLoading(true);
+                    
+                    const response = await fetch('../assets/data/bounties.json');
+                    const data = await response.json();
+                    
+                    bountyData = data;
+                    
+                    // Initialize filters
+                    populateFilterOptions(categoryFilter, data.categories, 'All Categories');
+                    populateFilterOptions(difficultyFilter, data.difficulties, 'All Difficulties');
+                    
+                    // Initial display
+                    displayActiveBounties(data.active_bounties);
+                    displayCompletedBounties(data.completed_bounties);
+                    
+                    showLoading(false);
+                    showCompletedLoading(false);
+                } catch (error) {
+                    console.error('Error loading bounty data:', error);
+                    showLoading(false);
+                    showCompletedLoading(false);
+                    
+                    if (activeBountiesContainer) {
+                        activeBountiesContainer.innerHTML = `<p class="error-message">Error loading bounty data. Please try again later.</p>`;
+                    }
+                    
+                    if (completedBountiesContainer) {
+                        completedBountiesContainer.innerHTML = `<p class="error-message">Error loading completed bounty data. Please try again later.</p>`;
+                    }
+                }
+            }
+            
+            // Populate filter dropdowns
+            function populateFilterOptions(selectElement, options, defaultText) {
+                if (!selectElement) return;
+                
+                // Add default option
+                const defaultOption = document.createElement('option');
+                defaultOption.value = 'all';
+                defaultOption.textContent = defaultText;
+                selectElement.appendChild(defaultOption);
+                
+                // Add options from data
+                options.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.toLowerCase();
+                    optionElement.textContent = capitalizeFirstLetter(option);
+                    selectElement.appendChild(optionElement);
+                });
+            }
+            
+            // Filter bounties
+            function filterBounties() {
+                if (!bountyData.active_bounties) return;
+                
+                const searchTerm = bountySearch.value.toLowerCase();
+                const category = categoryFilter.value;
+                const difficulty = difficultyFilter.value;
+                
+                filteredBounties = bountyData.active_bounties.filter(bounty => {
+                    const matchesSearch = 
+                        bounty.title.toLowerCase().includes(searchTerm) || 
+                        bounty.description.toLowerCase().includes(searchTerm);
+                    
+                    const matchesCategory = 
+                        category === 'all' || 
+                        bounty.category.toLowerCase() === category;
+                    
+                    const matchesDifficulty = 
+                        difficulty === 'all' || 
+                        bounty.difficulty.toLowerCase() === difficulty;
+                    
+                    return matchesSearch && matchesCategory && matchesDifficulty;
+                });
+                
+                displayActiveBounties(filteredBounties);
+            }
+            
+            // Display active bounties
+            function displayActiveBounties(bounties) {
+                if (!activeBountiesContainer) return;
+                
+                if (bounties.length === 0) {
+                    activeBountiesContainer.innerHTML = `<p>No bounties found matching your criteria.</p>`;
+                    return;
+                }
+                
+                let html = '';
+                
+                bounties.forEach(bounty => {
+                    const difficultyClass = `difficulty-${bounty.difficulty.toLowerCase()}`;
+                    
+                    html += `
+                        <div class="bounty-card">
+                            <div class="bounty-header">
+                                <div>
+                                    <h3 class="bounty-title">${bounty.id}: ${bounty.title}</h3>
+                                    <div class="bounty-meta">
+                                        <span>Posted by: ${bounty.posted_by}</span>
+                                        <span>Posted: ${bounty.posted_date}</span>
+                                        <span>Deadline: ${bounty.deadline}</span>
+                                    </div>
+                                </div>
+                                <div class="bounty-reward">${bounty.reward}</div>
+                            </div>
+                            
+                            <div class="bounty-description">
+                                <p>${bounty.description}</p>
+                            </div>
+                            
+                            <div class="bounty-tags">
+                                <span class="tag ${difficultyClass}">${capitalizeFirstLetter(bounty.difficulty)}</span>
+                                <span class="tag">${capitalizeFirstLetter(bounty.category)}</span>
+                                ${bounty.skills.map(skill => `<span class="tag">${capitalizeFirstLetter(skill)}</span>`).join('')}
+                            </div>
+                            
+                            <div class="bounty-footer">
+                                <div class="bounty-stats">
+                                    <div class="stat">
+                                        <span>Status:</span>
+                                        <span>${capitalizeFirstLetter(bounty.status)}</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span>Submissions:</span>
+                                        <span>${bounty.submissions}</span>
+                                    </div>
+                                </div>
+                                
+                                <a href="#" class="apply-btn">Apply for Bounty</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                activeBountiesContainer.innerHTML = html;
+            }
+            
+            // Display completed bounties
+            function displayCompletedBounties(bounties) {
+                if (!completedBountiesContainer) return;
+                
+                if (bounties.length === 0) {
+                    completedBountiesContainer.innerHTML = `<p>No completed bounties yet.</p>`;
+                    return;
+                }
+                
+                let html = '';
+                
+                bounties.forEach(bounty => {
+                    const difficultyClass = `difficulty-${bounty.difficulty.toLowerCase()}`;
+                    
+                    html += `
+                        <div class="bounty-card completed-bounty">
+                            <div class="bounty-header">
+                                <div>
+                                    <h3 class="bounty-title">${bounty.id}: ${bounty.title}</h3>
+                                    <div class="bounty-meta">
+                                        <span>Posted by: ${bounty.posted_by}</span>
+                                        <span>Posted: ${bounty.posted_date}</span>
+                                        <span>Completed: ${bounty.completed_date}</span>
+                                    </div>
+                                </div>
+                                <div class="bounty-reward">${bounty.reward}</div>
+                            </div>
+                            
+                            <div class="bounty-description">
+                                <p>${bounty.description}</p>
+                            </div>
+                            
+                            <div class="bounty-tags">
+                                <span class="tag ${difficultyClass}">${capitalizeFirstLetter(bounty.difficulty)}</span>
+                                <span class="tag">${capitalizeFirstLetter(bounty.category)}</span>
+                            </div>
+                            
+                            <div class="winner-info">
+                                <p>Winner: <span class="winner-name">${bounty.winner}</span></p>
+                                <p>View winning submission: <a href="${bounty.winner_submission}" target="_blank">View Submission</a></p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                completedBountiesContainer.innerHTML = html;
+            }
+            
+            // Helper function to show/hide loading indicator
+            function showLoading(isLoading) {
+                if (bountiesLoading) {
+                    bountiesLoading.style.display = isLoading ? 'block' : 'none';
+                }
+                if (activeBountiesContainer) {
+                    activeBountiesContainer.style.opacity = isLoading ? '0.5' : '1';
+                }
+            }
+            
+            // Helper function to show/hide completed loading indicator
+            function showCompletedLoading(isLoading) {
+                if (completedBountiesLoading) {
+                    completedBountiesLoading.style.display = isLoading ? 'block' : 'none';
+                }
+                if (completedBountiesContainer) {
+                    completedBountiesContainer.style.opacity = isLoading ? '0.5' : '1';
+                }
+            }
+            
+            // Helper function to capitalize first letter
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            
+            // Event listeners
+            if (bountySearch) {
+                bountySearch.addEventListener('input', filterBounties);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', filterBounties);
+            }
+            
+            if (difficultyFilter) {
+                difficultyFilter.addEventListener('change', filterBounties);
+            }
+            
+            // Initialize
+            fetchBountyData();
+        });
+    </script>
+</body>
+</html> 

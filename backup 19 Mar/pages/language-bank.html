@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Bank - Lingua Nova</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&display=swap">
+    <style>
+        /* Page-specific styles */
+        .language-bank-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--light-text);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-container input, 
+        .search-container select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--body-font);
+        }
+        
+        .search-container input {
+            flex: 1;
+        }
+        
+        .word-list table, 
+        .grammar-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .word-list th, 
+        .word-list td,
+        .grammar-list th,
+        .grammar-list td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .word-list th,
+        .grammar-list th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+        }
+        
+        .grammar-example {
+            background-color: var(--background-alt);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Lingua Nova</h1>
+                <p class="tagline">Crafting the language of tomorrow</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="language-bank.html" class="active">Language Bank</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="contributors.html">Contributors</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Language Bank</h1>
+            <p class="lead">Explore our growing collection of words, phrases, and grammatical structures.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="language-bank-tabs">
+                <button class="tab-btn active" data-tab="word-bank">Word Bank</button>
+                <button class="tab-btn" data-tab="grammar-bank">Grammar Bank</button>
+            </div>
+
+            <div class="tab-content active" id="word-bank">
+                <div class="search-container">
+                    <input type="text" id="word-search" placeholder="Search words...">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="nouns">Nouns</option>
+                        <option value="verbs">Verbs</option>
+                        <option value="adjectives">Adjectives</option>
+                        <option value="adverbs">Adverbs</option>
+                        <option value="prepositions">Prepositions</option>
+                        <option value="conjunctions">Conjunctions</option>
+                    </select>
+                </div>
+
+                <div class="word-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lingua Nova</th>
+                                <th>English</th>
+                                <th>Category</th>
+                                <th>Etymology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>novu</td>
+                                <td>hello</td>
+                                <td>Greeting</td>
+                                <td>Latin "novus" (new) + Esperanto "saluton"</td>
+                            </tr>
+                            <tr>
+                                <td>mundi</td>
+                                <td>world</td>
+                                <td>Noun</td>
+                                <td>Latin "mundus"</td>
+                            </tr>
+                            <tr>
+                                <td>lingua</td>
+                                <td>language</td>
+                                <td>Noun</td>
+                                <td>Latin "lingua"</td>
+                            </tr>
+                            <tr>
+                                <td>nova</td>
+                                <td>new</td>
+                                <td>Adjective</td>
+                                <td>Latin "novus"</td>
+                            </tr>
+                            <tr>
+                                <td>benventu</td>
+                                <td>welcome</td>
+                                <td>Greeting</td>
+                                <td>Italian "benvenuto"</td>
+                            </tr>
+                            <tr>
+                                <td>gratia</td>
+                                <td>thank you</td>
+                                <td>Expression</td>
+                                <td>Latin "gratia"</td>
+                            </tr>
+                            <tr>
+                                <td>peti</td>
+                                <td>please</td>
+                                <td>Expression</td>
+                                <td>French "petit" + Esperanto "peti"</td>
+                            </tr>
+                            <tr>
+                                <td>afir</td>
+                                <td>yes</td>
+                                <td>Affirmation</td>
+                                <td>Latin "affirmo"</td>
+                            </tr>
+                            <tr>
+                                <td>nega</td>
+                                <td>no</td>
+                                <td>Negation</td>
+                                <td>Latin "nego"</td>
+                            </tr>
+                            <tr>
+                                <td>bona</td>
+                                <td>good</td>
+                                <td>Adjective</td>
+                                <td>Latin "bonus"</td>
+                            </tr>
+                            <tr>
+                                <td>mala</td>
+                                <td>bad</td>
+                                <td>Adjective</td>
+                                <td>Latin "malus"</td>
+                            </tr>
+                            <tr>
+                                <td>diurna</td>
+                                <td>day</td>
+                                <td>Noun</td>
+                                <td>Latin "diurnus"</td>
+                            </tr>
+                            <tr>
+                                <td>nokta</td>
+                                <td>night</td>
+                                <td>Noun</td>
+                                <td>Slavic "nokt" + Esperanto "nokto"</td>
+                            </tr>
+                            <tr>
+                                <td>amiku</td>
+                                <td>friend</td>
+                                <td>Noun</td>
+                                <td>Latin "amicus" + Esperanto "amiko"</td>
+                            </tr>
+                            <tr>
+                                <td>aprendi</td>
+                                <td>learn</td>
+                                <td>Verb</td>
+                                <td>Latin "apprehendere"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-content" id="grammar-bank">
+                <div class="search-container">
+                    <input type="text" id="grammar-search" placeholder="Search grammar rules...">
+                    <select id="grammar-filter">
+                        <option value="all">All Categories</option>
+                        <option value="syntax">Syntax</option>
+                        <option value="morphology">Morphology</option>
+                        <option value="tense">Tense</option>
+                        <option value="mood">Mood</option>
+                        <option value="case">Case</option>
+                    </select>
+                </div>
+
+                <div class="grammar-list">
+                    <h3>Basic Sentence Structure</h3>
+                    <p>Lingua Nova follows a Subject-Verb-Object (SVO) word order, similar to English.</p>
+                    <div class="grammar-example">
+                        <p><strong>Mi parla lingua.</strong> = I speak the language.</p>
+                    </div>
+                    
+                    <h3>Noun Endings</h3>
+                    <p>All nouns end in -a (singular) or -as (plural).</p>
+                    <div class="grammar-example">
+                        <p><strong>lingua</strong> = language</p>
+                        <p><strong>linguas</strong> = languages</p>
+                    </div>
+                    
+                    <h3>Adjective Placement</h3>
+                    <p>Adjectives typically come before the noun they modify and end in -i.</p>
+                    <div class="grammar-example">
+                        <p><strong>novi lingua</strong> = new language</p>
+                        <p><strong>boni amiku</strong> = good friend</p>
+                    </div>
+                    
+                    <h3>Verb Conjugation</h3>
+                    <p>Verbs are conjugated by adding suffixes to the verb stem:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tense</th>
+                                <th>Suffix</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Present</td>
+                                <td>-a</td>
+                                <td>parla (speak)</td>
+                            </tr>
+                            <tr>
+                                <td>Past</td>
+                                <td>-av</td>
+                                <td>parlav (spoke)</td>
+                            </tr>
+                            <tr>
+                                <td>Future</td>
+                                <td>-ar</td>
+                                <td>parlar (will speak)</td>
+                            </tr>
+                            <tr>
+                                <td>Conditional</td>
+                                <td>-ari</td>
+                                <td>parlari (would speak)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Pronouns</h3>
+                    <p>Personal pronouns in Lingua Nova:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Person</th>
+                                <th>Singular</th>
+                                <th>Plural</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1st Person</td>
+                                <td>mi (I)</td>
+                                <td>nos (we)</td>
+                            </tr>
+                            <tr>
+                                <td>2nd Person</td>
+                                <td>tu (you)</td>
+                                <td>vos (you all)</td>
+                            </tr>
+                            <tr>
+                                <td>3rd Person</td>
+                                <td>il/el/ol (he/she/it)</td>
+                                <td>ils (they)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Lingua Nova</h3>
+                    <p>An academic initiative to develop a new language for the modern world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#vision">Vision</a></li>
+                        <li><a href="language-bank.html">Language Bank</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Lingua Nova Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Word search functionality
+            const wordSearch = document.getElementById('word-search');
+            const categoryFilter = document.getElementById('category-filter');
+            const wordRows = document.querySelectorAll('.word-list tbody tr');
+            
+            function filterWords() {
+                const searchTerm = wordSearch.value.toLowerCase();
+                const category = categoryFilter.value;
+                
+                wordRows.forEach(row => {
+                    const word = row.cells[0].textContent.toLowerCase();
+                    const translation = row.cells[1].textContent.toLowerCase();
+                    const rowCategory = row.cells[2].textContent.toLowerCase();
+                    
+                    const matchesSearch = word.includes(searchTerm) || 
+                                         translation.includes(searchTerm);
+                    const matchesCategory = category === 'all' || 
+                                           rowCategory.toLowerCase().includes(category.toLowerCase());
+                    
+                    if (matchesSearch && matchesCategory) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (wordSearch) {
+                wordSearch.addEventListener('input', filterWords);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', filterWords);
+            }
+            
+            // Grammar search functionality
+            const grammarSearch = document.getElementById('grammar-search');
+            const grammarFilter = document.getElementById('grammar-filter');
+            const grammarSections = document.querySelectorAll('.grammar-list h3');
+            
+            function filterGrammar() {
+                if (!grammarSearch || !grammarFilter) return;
+                
+                const searchTerm = grammarSearch.value.toLowerCase();
+                const category = grammarFilter.value;
+                
+                grammarSections.forEach(section => {
+                    const title = section.textContent.toLowerCase();
+                    const content = section.nextElementSibling.textContent.toLowerCase();
+                    const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
+                    
+                    // Simple category matching based on section title
+                    const matchesCategory = category === 'all' || 
+                                           title.includes(category.toLowerCase());
+                    
+                    if (matchesSearch && matchesCategory) {
+                        section.style.display = '';
+                        let el = section.nextElementSibling;
+                        while (el && el.tagName !== 'H3') {
+                            el.style.display = '';
+                            el = el.nextElementSibling;
+                        }
+                    } else {
+                        section.style.display = 'none';
+                        let el = section.nextElementSibling;
+                        while (el && el.tagName !== 'H3') {
+                            el.style.display = 'none';
+                            el = el.nextElementSibling;
+                        }
+                    }
+                });
+            }
+            
+            if (grammarSearch) {
+                grammarSearch.addEventListener('input', filterGrammar);
+            }
+            
+            if (grammarFilter) {
+                grammarFilter.addEventListener('change', filterGrammar);
+            }
+        });
+    </script>
+</body>
+</html> 

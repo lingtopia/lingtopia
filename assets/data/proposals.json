@@ -1,0 +1,65 @@
+{
+  "active_proposals": [
+    {
+      "id": "AIP-571",
+      "title": "Ape 2025 TikTok Shop Takeover",
+      "hash": "#cbfb5",
+      "author": "0x00Ce...de7F",
+      "votes": "448",
+      "quorum": "261m%",
+      "timeLeft": "8d left",
+      "status": "active",
+      "link": "https://snapshot.org/#/apecoin.eth/proposal/0x123456789"
+    }
+  ],
+  "past_proposals": [
+    {
+      "id": "AIP-557",
+      "title": "APE Universe- Lhasa Villa base & APE Universe Forum in Lhasa",
+      "hash": "#df406",
+      "author": "0x00Ce...de7F",
+      "votes": "2.7k",
+      "quorum": "2.78b%",
+      "timeAgo": "6d ago",
+      "status": "passed",
+      "progress": 85,
+      "link": "https://snapshot.org/#/apecoin.eth/proposal/0x987654321"
+    },
+    {
+      "id": "AIP-550",
+      "title": "ApeSites - A Tool for BAYC Communities to Create Customized Websites",
+      "hash": "#151c9",
+      "author": "0x00Ce...de7F",
+      "votes": "2.6k",
+      "quorum": "1.97b%",
+      "timeAgo": "6d ago",
+      "status": "passed",
+      "progress": 90,
+      "link": "https://snapshot.org/#/apecoin.eth/proposal/0x567891234"
+    },
+    {
+      "id": "AIP-529",
+      "title": "Development and Enhancement of APE-BOT Discord Tipping Bot",
+      "hash": "#b732d",
+      "author": "0x00Ce...de7F",
+      "votes": "2.5k",
+      "quorum": "1.71b%",
+      "timeAgo": "1mo ago",
+      "status": "passed",
+      "progress": 75,
+      "link": "https://snapshot.org/#/apecoin.eth/proposal/0x345678912"
+    },
+    {
+      "id": "AIP-540",
+      "title": "Ape Shoes: An affordable and comfortable approach for ROI within the DAO",
+      "hash": "#a3ce5",
+      "author": "0x00Ce...de7F",
+      "votes": "2.5k",
+      "quorum": "1.71b%",
+      "timeAgo": "1mo ago",
+      "status": "passed",
+      "progress": 60,
+      "link": "https://snapshot.org/#/apecoin.eth/proposal/0x234567891"
+    }
+  ]
+} 

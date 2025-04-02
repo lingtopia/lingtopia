@@ -1,0 +1,171 @@
+{
+  "core_team": [
+    {
+      "id": "c001",
+      "name": "Dr. Elena Petrova",
+      "role": "Project Lead",
+      "image": "../assets/images/contributors/elena.jpg",
+      "bio": "Linguistics professor with a specialization in constructed languages and cross-cultural communication.",
+      "contributions": "Project vision, grammatical framework, and academic outreach.",
+      "links": {
+        "email": "elena@linguanova.org",
+        "twitter": "https://twitter.com/elenapetrova",
+        "website": "https://elenapetrova.com"
+      }
+    },
+    {
+      "id": "c002",
+      "name": "Prof. Michael Chen",
+      "role": "Lead Linguist",
+      "image": "../assets/images/contributors/michael.jpg",
+      "bio": "Computational linguist with expertise in language acquisition and semantic structures.",
+      "contributions": "Vocabulary development, phonological system, and teaching methodology.",
+      "links": {
+        "email": "michael@linguanova.org",
+        "github": "https://github.com/michaelchen"
+      }
+    },
+    {
+      "id": "c003",
+      "name": "Dr. Sophia Rodriguez",
+      "role": "Cultural Advisor",
+      "image": "../assets/images/contributors/sophia.jpg",
+      "bio": "Anthropologist specializing in cultural linguistics and indigenous language preservation.",
+      "contributions": "Cultural context, pragmatics, and cross-cultural adaptation.",
+      "links": {
+        "email": "sophia@linguanova.org",
+        "linkedin": "https://linkedin.com/in/sophiarodriguez"
+      }
+    }
+  ],
+  "contributors": [
+    {
+      "id": "c004",
+      "name": "Alex Johnson",
+      "username": "@alexj",
+      "image": "../assets/images/contributors/alex.jpg",
+      "area": "vocabulary",
+      "contributions": 127,
+      "joined": "2021-03-15",
+      "links": {
+        "github": "https://github.com/alexjohnson"
+      }
+    },
+    {
+      "id": "c005",
+      "name": "Maria Gonzalez",
+      "username": "@mariag",
+      "image": "../assets/images/contributors/maria.jpg",
+      "area": "grammar",
+      "contributions": 98,
+      "joined": "2021-04-22",
+      "links": {
+        "twitter": "https://twitter.com/mariagonzalez"
+      }
+    },
+    {
+      "id": "c006",
+      "name": "Jamal Williams",
+      "username": "@jamalw",
+      "image": "../assets/images/contributors/jamal.jpg",
+      "area": "documentation",
+      "contributions": 86,
+      "joined": "2021-05-10",
+      "links": {
+        "github": "https://github.com/jamalwilliams"
+      }
+    },
+    {
+      "id": "c007",
+      "name": "Yuki Tanaka",
+      "username": "@yukit",
+      "image": "../assets/images/contributors/yuki.jpg",
+      "area": "vocabulary",
+      "contributions": 74,
+      "joined": "2021-06-18",
+      "links": {
+        "website": "https://yukitanaka.com"
+      }
+    },
+    {
+      "id": "c008",
+      "name": "Carlos Mendez",
+      "username": "@carlosm",
+      "image": "../assets/images/contributors/carlos.jpg",
+      "area": "examples",
+      "contributions": 65,
+      "joined": "2021-07-05",
+      "links": {
+        "github": "https://github.com/carlosmendez"
+      }
+    },
+    {
+      "id": "c009",
+      "name": "Priya Patel",
+      "username": "@priyap",
+      "image": "../assets/images/contributors/priya.jpg",
+      "area": "grammar",
+      "contributions": 59,
+      "joined": "2021-08-12",
+      "links": {
+        "linkedin": "https://linkedin.com/in/priyapatel"
+      }
+    },
+    {
+      "id": "c010",
+      "name": "Thomas Mueller",
+      "username": "@thomasm",
+      "image": "../assets/images/contributors/thomas.jpg",
+      "area": "vocabulary",
+      "contributions": 52,
+      "joined": "2021-09-03",
+      "links": {
+        "github": "https://github.com/thomasmueller"
+      }
+    },
+    {
+      "id": "c011",
+      "name": "Fatima Al-Zahra",
+      "username": "@fatimaz",
+      "image": "../assets/images/contributors/fatima.jpg",
+      "area": "examples",
+      "contributions": 48,
+      "joined": "2021-10-15",
+      "links": {
+        "twitter": "https://twitter.com/fatimaalzahra"
+      }
+    },
+    {
+      "id": "c012",
+      "name": "David Kim",
+      "username": "@davidk",
+      "image": "../assets/images/contributors/david.jpg",
+      "area": "documentation",
+      "contributions": 43,
+      "joined": "2021-11-20",
+      "links": {
+        "github": "https://github.com/davidkim"
+      }
+    },
+    {
+      "id": "c013",
+      "name": "Olivia Brown",
+      "username": "@oliviab",
+      "image": "../assets/images/contributors/olivia.jpg",
+      "area": "vocabulary",
+      "contributions": 37,
+      "joined": "2022-01-08",
+      "links": {
+        "website": "https://oliviabrown.net"
+      }
+    }
+  ],
+  "areas": [
+    "vocabulary",
+    "grammar",
+    "examples",
+    "documentation",
+    "technology",
+    "outreach"
+  ]
+} 

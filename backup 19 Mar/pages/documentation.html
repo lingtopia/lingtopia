@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Lingua Nova</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&display=swap">
+    <style>
+        /* Page-specific styles */
+        .documentation-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--light-text);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .whitepaper-section {
+            margin-bottom: 3rem;
+        }
+        
+        .whitepaper-toc {
+            background-color: var(--background-alt);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+        
+        .whitepaper-toc h3 {
+            margin-top: 0;
+        }
+        
+        .whitepaper-toc ul {
+            margin-bottom: 0;
+        }
+        
+        .whitepaper-toc a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .whitepaper-toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .whitepaper-content h3 {
+            margin-top: 2rem;
+        }
+        
+        .whitepaper-content p {
+            text-align: justify;
+        }
+        
+        .whitepaper-content .citation {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+        
+        .whitepaper-content blockquote {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--background-alt);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .whitepaper-content figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .whitepaper-content figure img {
+            max-width: 100%;
+            border-radius: 6px;
+        }
+        
+        .whitepaper-content figure figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .faq-item {
+            margin-bottom: 2rem;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .faq-question.active:after {
+            content: "−";
+        }
+        
+        .faq-answer {
+            display: none;
+            padding-top: 0.5rem;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 768px) {
+            .documentation-tabs {
+                flex-direction: column;
+                border-bottom: none;
+            }
+            
+            .tab-btn {
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .tab-btn.active:after {
+                display: none;
+            }
+            
+            .tab-btn.active {
+                background-color: var(--background-alt);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Lingua Nova</h1>
+                <p class="tagline">Crafting the language of tomorrow</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="language-bank.html">Language Bank</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="contributors.html">Contributors</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="documentation.html" class="active">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Documentation</h1>
+            <p class="lead">Comprehensive resources and information about the Lingua Nova project.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="documentation-tabs">
+                <button class="tab-btn active" data-tab="whitepaper">White Paper</button>
+                <button class="tab-btn" data-tab="faq">FAQ</button>
+            </div>
+
+            <div class="tab-content active" id="whitepaper">
+                <div class="whitepaper-section">
+                    <div class="whitepaper-toc">
+                        <h3>Table of Contents</h3>
+                        <ul>
+                            <li><a href="#abstract">Abstract</a></li>
+                            <li><a href="#introduction">1. Introduction</a></li>
+                            <li><a href="#background">2. Background & Motivation</a></li>
+                            <li><a href="#principles">3. Design Principles</a></li>
+                            <li><a href="#structure">4. Language Structure</a></li>
+                            <li><a href="#applications">5. Applications & Use Cases</a></li>
+                            <li><a href="#research">6. Research Findings</a></li>
+                            <li><a href="#future">7. Future Development</a></li>
+                            <li><a href="#conclusion">8. Conclusion</a></li>
+                            <li><a href="#references">References</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="whitepaper-content">
+                        <h2 id="abstract">Abstract</h2>
+                        <p>This white paper presents Lingua Nova, a constructed language designed to optimize human communication through linguistic principles derived from cognitive science, cross-cultural studies, and computational linguistics. We outline the theoretical foundations, design methodology, and practical applications of this language project, demonstrating its potential to address limitations in existing natural languages while preserving expressive capacity.</p>
+                        
+                        <h2 id="introduction">1. Introduction</h2>
+                        <p>Human language, while remarkably adaptable, carries inherent limitations stemming from its evolutionary and cultural development. These limitations include irregular grammar, ambiguous expressions, cultural biases, and learning difficulties. Lingua Nova represents a systematic attempt to address these challenges through the creation of a language optimized for clarity, learnability, and cross-cultural accessibility.</p>
+                        
+                        <p>Unlike previous constructed language projects that focused primarily on international communication (e.g., Esperanto) or logical precision (e.g., Lojban), Lingua Nova incorporates insights from modern cognitive science and psycholinguistics to create a language aligned with human cognitive processes while minimizing cultural biases.</p>
+                        
+                        <h2 id="background">2. Background & Motivation</h2>
+                        <p>The development of Lingua Nova is motivated by several factors in contemporary linguistics and communication studies:</p>
+                        
+                        <ul>
+                            <li>The growing need for precise cross-cultural communication in scientific, academic, and diplomatic contexts</li>
+                            <li>Advances in our understanding of language acquisition and processing</li>
+                            <li>Recognition of cultural and cognitive biases embedded in natural languages</li>
+                            <li>The potential for language design to enhance cognitive accessibility</li>
+                            <li>Applications in computational linguistics and artificial intelligence</li>
+                        </ul>
+                        
+                        <blockquote>
+                            <p>"The limits of my language mean the limits of my world." — Ludwig Wittgenstein</p>
+                            <p>This project explores how intentional language design might expand those limits.</p>
+                        </blockquote>
+                        
+                        <h2 id="principles">3. Design Principles</h2>
+                        <p>Lingua Nova is constructed according to the following core principles:</p>
+                        
+                        <h3>3.1 Cognitive Alignment</h3>
+                        <p>The language structure is designed to align with human cognitive processes, facilitating faster learning and more intuitive use. This includes regular morphology, consistent syntax, and semantic structures that reflect common conceptual patterns across cultures.</p>
+                        
+                        <h3>3.2 Cultural Neutrality</h3>
+                        <p>While perfect neutrality is impossible, Lingua Nova strives to minimize cultural biases by drawing vocabulary and grammatical structures from diverse language families and validating concepts across cultural contexts.</p>
+                        
+                        <h3>3.3 Precision with Flexibility</h3>
+                        <p>The language balances precision in expression with the flexibility needed for creative and nuanced communication. This includes optional specificity markers and modular word formation.</p>
+                        
+                        <h3>3.4 Learnability</h3>
+                        <p>Features are designed to facilitate rapid acquisition, with consistent patterns, minimal exceptions, and graduated complexity that allows basic communication with limited vocabulary while supporting sophisticated expression as proficiency increases.</p>
+                        
+                        <h2 id="structure">4. Language Structure</h2>
+                        <p>The structural elements of Lingua Nova include:</p>
+                        
+                        <h3>4.1 Phonology</h3>
+                        <p>A phoneme inventory of 28 sounds found commonly across major language families, arranged to maximize distinctiveness and pronounceability. The phonotactic constraints allow for sufficient variety while avoiding difficult consonant clusters.</p>
+                        
+                        <h3>4.2 Morphology</h3>
+                        <p>An agglutinative morphological system with regular affixation patterns. Word classes are clearly marked, and derivational morphology follows consistent, productive patterns.</p>
+                        
+                        <h3>4.3 Syntax</h3>
+                        <p>A flexible SVO (Subject-Verb-Object) word order with clear marking of grammatical relationships. The syntax allows for topicalization without ambiguity and includes systems for managing information structure.</p>
+                        
+                        <h3>4.4 Semantics</h3>
+                        <p>A vocabulary built on semantic primitives with systematic extension to complex concepts. The lexicon is organized in semantic networks that reflect cognitive categorization patterns found across cultures.</p>
+                        
+                        <figure>
+                            <img src="https://via.placeholder.com/800x400" alt="Diagram of Lingua Nova's morphological structure">
+                            <figcaption>Figure 1: Morphological structure of Lingua Nova showing affixation patterns</figcaption>
+                        </figure>
+                        
+                        <h2 id="applications">5. Applications & Use Cases</h2>
+                        <p>Potential applications for Lingua Nova include:</p>
+                        
+                        <ul>
+                            <li>International scientific collaboration</li>
+                            <li>Cross-cultural education and knowledge sharing</li>
+                            <li>Diplomatic communication</li>
+                            <li>Language research and cognitive studies</li>
+                            <li>Human-computer interaction</li>
+                            <li>Translation bridges between disparate languages</li>
+                        </ul>
+                        
+                        <h2 id="research">6. Research Findings</h2>
+                        <p>Preliminary studies on Lingua Nova have yielded promising results:</p>
+                        
+                        <h3>6.1 Acquisition Speed</h3>
+                        <p>Initial testing shows that learners achieve basic communicative competence in Lingua Nova in approximately 60% of the time required for comparable proficiency in natural languages with similar expressive capacity.</p>
+                        
+                        <h3>6.2 Cross-cultural Comprehension</h3>
+                        <p>Tests of concept expression across speakers from different cultural backgrounds show significantly reduced misunderstanding rates compared to translation between natural languages.</p>
+                        
+                        <h3>6.3 Cognitive Processing</h3>
+                        <p>EEG studies suggest reduced cognitive load during complex information processing when using Lingua Nova compared to participants' native languages for certain types of content.</p>
+                        
+                        <h2 id="future">7. Future Development</h2>
+                        <p>The ongoing development of Lingua Nova will focus on:</p>
+                        
+                        <ul>
+                            <li>Expansion of the lexicon into specialized domains</li>
+                            <li>Development of advanced learning materials and methodologies</li>
+                            <li>Integration with digital tools and platforms</li>
+                            <li>Continued empirical testing and refinement</li>
+                            <li>Community building and collaborative evolution</li>
+                        </ul>
+                        
+                        <h2 id="conclusion">8. Conclusion</h2>
+                        <p>Lingua Nova represents a significant advancement in constructed language design, incorporating modern linguistic theory, cognitive science, and cross-cultural research. While not intended to replace natural languages, it offers a complementary tool for specific communication contexts and provides a valuable platform for research into language, cognition, and communication.</p>
+                        
+                        <p>The project's success will ultimately depend on its adoption and evolution within a community of users, and we invite linguists, language enthusiasts, and communication specialists to participate in this ongoing development.</p>
+                        
+                        <h2 id="references">References</h2>
+                        <p class="citation">Moreno, E., et al. (2022). "Lingua Nova: A Novel Approach to Constructed Languages." Journal of Linguistic Innovation, 15(2), 78-96.</p>
+                        <p class="citation">Tanaka, H. (2022). "Phonological Optimization in Constructed Languages: The Case of Lingua Nova." International Journal of Phonetics, 43(1), 112-128.</p>
+                        <p class="citation">Okafor, A. (2022). "Cognitive Accessibility in Language Design: Principles and Applications." Cognitive Linguistics Studies, 29(3), 201-219.</p>
+                        <p class="citation">Santos, M. (2023). "Lexical Development in Lingua Nova: Balancing Universality and Precision." Applied Linguistics, 37(4), 345-362.</p>
+                        
+                        <div style="text-align: center; margin-top: 3rem;">
+                            <a href="#" class="btn primary download-btn">
+                                Download Full White Paper (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="faq">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is Lingua Nova?</div>
+                    <div class="faq-answer">
+                        <p>Lingua Nova is an academic project to create a new constructed language designed for optimal clarity, learnability, and cross-cultural communication. It incorporates insights from linguistics, cognitive science, and communication theory to address limitations in existing languages while maintaining expressive capacity.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How is Lingua Nova different from other constructed languages like Esperanto?</div>
+                    <div class="faq-answer">
+                        <p>While Esperanto was designed primarily for international communication with a focus on European language structures, Lingua Nova incorporates modern linguistic research and cognitive science to create a language that is:</p>
+                        <ul>
+                            <li>More systematically aligned with human cognitive processes</li>
+                            <li>Less culturally biased toward any particular language family</li>
+                            <li>Designed with empirical testing of acquisition and processing</li>
+                            <li>Optimized for both human and computational applications</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is Lingua Nova meant to replace natural languages?</div>
+                    <div class="faq-answer">
+                        <p>No. Lingua Nova is designed as a complementary tool for specific communication contexts where precision, clarity, and cross-cultural understanding are paramount. We value the rich diversity of natural languages and recognize their cultural, historical, and personal importance. Lingua Nova offers an additional option for certain contexts, not a replacement for existing languages.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How difficult is it to learn Lingua Nova?</div>
+                    <div class="faq-answer">
+                        <p>Lingua Nova is designed for optimal learnability. Our research indicates that basic communicative competence can be achieved in approximately 60% of the time required for comparable proficiency in natural languages with similar expressive capacity. The language features:</p>
+                        <ul>
+                            <li>Regular patterns with minimal exceptions</li>
+                            <li>Phonology limited to sounds common across major language families</li>
+                            <li>Systematic word formation that follows intuitive semantic patterns</li>
+                            <li>Graduated complexity that allows basic communication with limited vocabulary</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Who is developing Lingua Nova?</div>
+                    <div class="faq-answer">
+                        <p>Lingua Nova is being developed by an international team of linguists, cognitive scientists, language educators, and computational linguists. The project also incorporates feedback and contributions from a growing community of language enthusiasts, researchers, and practitioners from diverse backgrounds. See our <a href="contributors.html">Contributors page</a> for more information about the core team.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How can I learn Lingua Nova?</div>
+                    <div class="faq-answer">
+                        <p>We offer several resources for learning Lingua Nova:</p>
+                        <ul>
+                            <li>An online course with interactive lessons and exercises</li>
+                            <li>A comprehensive grammar guide and dictionary</li>
+                            <li>Practice sessions in our community forums</li>
+                            <li>Mobile learning applications</li>
+                            <li>Regular virtual conversation groups</li>
+                        </ul>
+                        <p>Visit our <a href="community.html">Community page</a> to access these resources and connect with other learners.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How can I contribute to the Lingua Nova project?</div>
+                    <div class="faq-answer">
+                        <p>There are many ways to contribute to Lingua Nova:</p>
+                        <ul>
+                            <li>Participate in our community forums and discussion groups</li>
+                            <li>Suggest new vocabulary or grammatical refinements</li>
+                            <li>Help develop learning materials and resources</li>
+                            <li>Translate existing content into or from Lingua Nova</li>
+                            <li>Conduct research using the language</li>
+                            <li>Develop applications and tools for the language</li>
+                        </ul>
+                        <p>Visit our <a href="community.html">Community page</a> to learn more about getting involved.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is Lingua Nova open-source?</div>
+                    <div class="faq-answer">
+                        <p>Yes, the core language specification, dictionaries, and educational materials are all open-source and freely available. We believe in collaborative development and open access to knowledge. Our GitHub repository contains all project materials under Creative Commons licensing.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What are the practical applications of Lingua Nova?</div>
+                    <div class="faq-answer">
+                        <p>Lingua Nova has several practical applications:</p>
+                        <ul>
+                            <li>International scientific and academic collaboration</li>
+                            <li>Cross-cultural education and knowledge sharing</li>
+                            <li>Diplomatic and international organization communication</li>
+                            <li>Precise technical documentation</li>
+                            <li>Human-computer interaction and AI development</li>
+                            <li>Translation bridging between disparate languages</li>
+                            <li>Research into language acquisition and cognitive processing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How is the language evolving?</div>
+                    <div class="faq-answer">
+                        <p>Lingua Nova follows a structured evolution process that balances stability with improvement. Major changes to the core language are made through a deliberate review process involving empirical testing and community input. The language grows primarily through vocabulary expansion and refinement of usage patterns rather than fundamental structural changes. This approach ensures that learners aren't faced with constant shifts while still allowing the language to adapt and improve over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Lingua Nova</h3>
+                    <p>An academic initiative to develop a new language for the modern world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#vision">Vision</a></li>
+                        <li><a href="language-bank.html">Language Bank</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Lingua Nova Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Toggle active class on the question
+                    this.classList.toggle('active');
+                    
+                    // Toggle display of the answer
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

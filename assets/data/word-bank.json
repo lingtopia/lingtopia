@@ -1,0 +1,195 @@
+{
+  "words": [
+    {
+      "id": "w001",
+      "term": "mira",
+      "pronunciation": "/miːra/",
+      "partOfSpeech": "noun",
+      "definition": "world, earth, planet",
+      "category": "nature",
+      "examples": ["Mira esta grande.", "The world is large."],
+      "dateAdded": "2021-06-15",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w002",
+      "term": "soli",
+      "pronunciation": "/soʊli/",
+      "partOfSpeech": "noun",
+      "definition": "sun, solar entity",
+      "category": "nature",
+      "examples": ["Soli brila.", "The sun shines."],
+      "dateAdded": "2021-06-15",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w003",
+      "term": "luna",
+      "pronunciation": "/luːna/",
+      "partOfSpeech": "noun",
+      "definition": "moon, lunar body",
+      "category": "nature",
+      "examples": ["Luna brila nokte.", "The moon shines at night."],
+      "dateAdded": "2021-06-16",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w004",
+      "term": "akva",
+      "pronunciation": "/akva/",
+      "partOfSpeech": "noun",
+      "definition": "water, liquid",
+      "category": "nature",
+      "examples": ["Mi bibe akva.", "I drink water."],
+      "dateAdded": "2021-06-16",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w005",
+      "term": "parla",
+      "pronunciation": "/parla/",
+      "partOfSpeech": "verb",
+      "definition": "to speak, to talk",
+      "category": "communication",
+      "examples": ["Mi parla Lingua Nova.", "I speak Lingua Nova."],
+      "dateAdded": "2021-06-17",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w006",
+      "term": "audi",
+      "pronunciation": "/aʊdi/",
+      "partOfSpeech": "verb",
+      "definition": "to hear, to listen",
+      "category": "communication",
+      "examples": ["Mi audi muziko.", "I hear music."],
+      "dateAdded": "2021-06-17",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w007",
+      "term": "vide",
+      "pronunciation": "/viːde/",
+      "partOfSpeech": "verb",
+      "definition": "to see, to view",
+      "category": "communication",
+      "examples": ["Mi vide tu.", "I see you."],
+      "dateAdded": "2021-06-18",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w008",
+      "term": "pensa",
+      "pronunciation": "/pensa/",
+      "partOfSpeech": "verb",
+      "definition": "to think, to consider",
+      "category": "cognition",
+      "examples": ["Mi pensa ke...", "I think that..."],
+      "dateAdded": "2021-06-18",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w009",
+      "term": "senti",
+      "pronunciation": "/senti/",
+      "partOfSpeech": "verb",
+      "definition": "to feel, to sense",
+      "category": "cognition",
+      "examples": ["Mi senti felice.", "I feel happy."],
+      "dateAdded": "2021-06-19",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w010",
+      "term": "homo",
+      "pronunciation": "/hoʊmoʊ/",
+      "partOfSpeech": "noun",
+      "definition": "human, person",
+      "category": "beings",
+      "examples": ["Homo es inteligente.", "Humans are intelligent."],
+      "dateAdded": "2021-06-19",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w011",
+      "term": "tempo",
+      "pronunciation": "/tempoʊ/",
+      "partOfSpeech": "noun",
+      "definition": "time, duration",
+      "category": "abstract",
+      "examples": ["Tempo pasa rapide.", "Time passes quickly."],
+      "dateAdded": "2021-06-20",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w012",
+      "term": "spaco",
+      "pronunciation": "/spakoʊ/",
+      "partOfSpeech": "noun",
+      "definition": "space, area",
+      "category": "abstract",
+      "examples": ["Universo es grande spaco.", "The universe is a large space."],
+      "dateAdded": "2021-06-20",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w013",
+      "term": "ami",
+      "pronunciation": "/ami/",
+      "partOfSpeech": "noun",
+      "definition": "friend, ally",
+      "category": "social",
+      "examples": ["Tu es mi ami.", "You are my friend."],
+      "dateAdded": "2021-06-21",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w014",
+      "term": "famili",
+      "pronunciation": "/famili/",
+      "partOfSpeech": "noun",
+      "definition": "family, relatives",
+      "category": "social",
+      "examples": ["Mi ama mi famili.", "I love my family."],
+      "dateAdded": "2021-06-21",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "w015",
+      "term": "lingva",
+      "pronunciation": "/lingva/",
+      "partOfSpeech": "noun",
+      "definition": "language, speech system",
+      "category": "communication",
+      "examples": ["Lingva Nova es facile.", "Lingua Nova is easy."],
+      "dateAdded": "2021-06-22",
+      "difficulty": "beginner"
+    }
+  ],
+  "categories": [
+    "nature",
+    "communication",
+    "cognition",
+    "beings",
+    "abstract",
+    "social",
+    "technology",
+    "arts",
+    "science"
+  ],
+  "partsOfSpeech": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb",
+    "pronoun",
+    "preposition",
+    "conjunction",
+    "interjection"
+  ],
+  "difficulties": [
+    "beginner",
+    "intermediate",
+    "advanced"
+  ]
+} 

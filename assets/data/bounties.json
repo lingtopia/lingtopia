@@ -1,0 +1,76 @@
+{
+  "active_bounties": [
+    {
+      "id": "B001",
+      "title": "Create 100 New Vocabulary Words for Technology Domain",
+      "description": "Develop 100 new vocabulary terms related to modern technology, computing, and digital communication. Each term should include pronunciation, definition, and example usage.",
+      "reward": "500 LNT",
+      "difficulty": "medium",
+      "category": "vocabulary",
+      "deadline": "2023-12-15",
+      "skills": ["linguistics", "technology"],
+      "status": "open",
+      "submissions": 3,
+      "posted_by": "Dr. Elena Petrova",
+      "posted_date": "2023-11-01"
+    },
+    {
+      "id": "B002",
+      "title": "Develop Grammar Rules for Conditional Statements",
+      "description": "Create a comprehensive set of grammar rules for expressing conditional statements (if/then constructions) in Lingua Nova. Include examples, edge cases, and integration with existing tense system.",
+      "reward": "750 LNT",
+      "difficulty": "hard",
+      "category": "grammar",
+      "deadline": "2023-12-20",
+      "skills": ["linguistics", "grammar"],
+      "status": "open",
+      "submissions": 1,
+      "posted_by": "Prof. Michael Chen",
+      "posted_date": "2023-11-05"
+    },
+    {
+      "id": "B003",
+      "title": "Design Flashcard App for Mobile Learning",
+      "description": "Design and develop a mobile application for learning Lingua Nova vocabulary using flashcards. The app should include spaced repetition, progress tracking, and audio pronunciation.",
+      "reward": "1200 LNT",
+      "difficulty": "hard",
+      "category": "technology",
+      "deadline": "2024-01-15",
+      "skills": ["app development", "UI/UX design"],
+      "status": "open",
+      "submissions": 0,
+      "posted_by": "Dr. Sophia Rodriguez",
+      "posted_date": "2023-11-10"
+    }
+  ],
+  "completed_bounties": [
+    {
+      "id": "B000",
+      "title": "Create Basic Pronunciation Guide",
+      "description": "Develop a comprehensive pronunciation guide for Lingua Nova, including audio examples and common pronunciation challenges for English speakers.",
+      "reward": "300 LNT",
+      "difficulty": "easy",
+      "category": "documentation",
+      "completed_date": "2023-10-15",
+      "winner": "Alex Johnson",
+      "winner_submission": "https://linguanova.org/submissions/pronunciation-guide",
+      "posted_by": "Dr. Elena Petrova",
+      "posted_date": "2023-09-20"
+    }
+  ],
+  "categories": [
+    "vocabulary",
+    "grammar",
+    "pronunciation",
+    "documentation",
+    "technology",
+    "translation",
+    "research",
+    "outreach"
+  ],
+  "difficulties": [
+    "easy",
+    "medium",
+    "hard"
+  ]
+} 

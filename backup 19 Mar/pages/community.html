@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum - Lingua Nova</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&display=swap">
+    <style>
+        /* Page-specific styles */
+        .forum-container {
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .forum-title {
+            margin: 0;
+        }
+        
+        .forum-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--background-alt);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .category-tag:hover, .category-tag.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .forum-topics {
+            margin-bottom: 2rem;
+        }
+        
+        .topic {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        
+        .topic:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--background-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+        
+        .topic-content {
+            flex-grow: 1;
+        }
+        
+        .topic-title {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-left: auto;
+        }
+        
+        .community-cta {
+            background-color: var(--background-alt);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+        
+        .community-cta h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .community-cta h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .community-platforms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .platform-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .platform-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .platform-title {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .platform-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 992px) {
+            .community-platforms {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .topic {
+                flex-direction: column;
+            }
+            
+            .topic-stats {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .community-platforms {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Lingua Nova</h1>
+                <p class="tagline">Crafting the language of tomorrow</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="language-bank.html">Language Bank</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="contributors.html">Contributors</a></li>
+                    <li><a href="community.html" class="active">Community</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Community Forum</h1>
+            <p class="lead">Join the conversation and connect with fellow language enthusiasts.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="community-cta">
+                <h2>Join Our Growing Community</h2>
+                <p>Connect with linguists, language enthusiasts, and researchers from around the world who are contributing to the development of Lingua Nova.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn primary">Sign Up</a>
+                    <a href="#" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="forum-container">
+                <div class="forum-header">
+                    <h2 class="forum-title">Discussion Forum</h2>
+                    <a href="#" class="btn primary">New Topic</a>
+                </div>
+                
+                <div class="forum-categories">
+                    <div class="category-tag active">All</div>
+                    <div class="category-tag">Announcements</div>
+                    <div class="category-tag">Vocabulary</div>
+                    <div class="category-tag">Grammar</div>
+                    <div class="category-tag">Pronunciation</div>
+                    <div class="category-tag">Research</div>
+                    <div class="category-tag">Learning</div>
+                    <div class="category-tag">Applications</div>
+                </div>
+                
+                <div class="forum-topics">
+                    <div class="topic">
+                        <div class="topic-icon">A</div>
+                        <div class="topic-content">
+                            <h3 class="topic-title">Announcement: New Vocabulary Additions - June 2023</h3>
+                            <div class="topic-meta">
+                                <span>Posted by Admin</span>
+                                <span>June 15, 2023</span>
+                                <span>Announcements</span>
+                            </div>
+                            <p>We've added 120 new words to the Lingua Nova vocabulary this month, focusing on scientific and technological terminology.</p>
+                        </div>
+                        <div class="topic-stats">
+                            <span>24 Replies</span>
+                            <span>156 Views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="topic">
+                        <div class="topic-icon">Q</div>
+                        <div class="topic-content">
+                            <h3 class="topic-title">Question about verb conjugation in future perfect tense</h3>
+                            <div class="topic-meta">
+                                <span>Posted by LinguaLearner</span>
+                                <span>June 10, 2023</span>
+                                <span>Grammar</span>
+                            </div>
+                            <p>I'm confused about how to form the future perfect tense for irregular verbs. Can someone provide examples?</p>
+                        </div>
+                        <div class="topic-stats">
+                            <span>8 Replies</span>
+                            <span>42 Views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="topic">
+                        <div class="topic-icon">D</div>
+                        <div class="topic-content">
+                            <h3 class="topic-title">Discussion: Cultural neutrality in semantic structures</h3>
+                            <div class="topic-meta">
+                                <span>Posted by SemanticsScholar</span>
+                                <span>June 5, 2023</span>
+                                <span>Research</span>
+                            </div>
+                            <p>How can we ensure that our semantic structures remain culturally neutral while still being expressive? I'd like to discuss approaches from other constructed languages.</p>
+                        </div>
+                        <div class="topic-stats">
+                            <span>15 Replies</span>
+                            <span>87 Views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="topic">
+                        <div class="topic-icon">S</div>
+                        <div class="topic-content">
+                            <h3 class="topic-title">Suggestion: New affixes for scientific terminology</h3>
+                            <div class="topic-meta">
+                                <span>Posted by BiologyProf</span>
+                                <span>June 1, 2023</span>
+                                <span>Vocabulary</span>
+                            </div>
+                            <p>I've been working on a systematic approach to creating scientific terminology using consistent affixes. Here's my proposal for biological terms.</p>
+                        </div>
+                        <div class="topic-stats">
+                            <span>12 Replies</span>
+                            <span>63 Views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="topic">
+                        <div class="topic-icon">R</div>
+                        <div class="topic-content">
+                            <h3 class="topic-title">Research findings: Comprehension speed in new learners</h3>
+                            <div class="topic-meta">
+                                <span>Posted by CognitiveResearcher</span>
+                                <span>May 28, 2023</span>
+                                <span>Research</span>
+                            </div>
+                            <p>I've completed a small study on comprehension speed among new learners of Lingua Nova compared to other languages. The results are promising!</p>
+                        </div>
+                        <div class="topic-stats">
+                            <span>7 Replies</span>
+                            <span>112 Views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#" class="btn secondary">View More Topics</a>
+                </div>
+            </div>
+            
+            <h2>Connect on Other Platforms</h2>
+            <p>Join our community on these platforms to stay updated and connect with other Lingua Nova enthusiasts:</p>
+            
+            <div class="community-platforms">
+                <div class="platform-card">
+                    <div class="platform-icon">T</div>
+                    <h3 class="platform-title">Twitter</h3>
+                    <p class="platform-description">Follow us for daily updates, word of the day, and quick language tips.</p>
+                    <a href="#" class="btn secondary">Follow @LinguaNova</a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">TG</div>
+                    <h3 class="platform-title">Telegram</h3>
+                    <p class="platform-description">Join our Telegram group for real-time discussions and practice sessions.</p>
+                    <a href="#" class="btn secondary">Join Group</a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">GH</div>
+                    <h3 class="platform-title">GitHub</h3>
+                    <p class="platform-description">Contribute to our open-source tools, dictionaries, and learning resources.</p>
+                    <a href="#" class="btn secondary">View Repository</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Lingua Nova</h3>
+                    <p>An academic initiative to develop a new language for the modern world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#vision">Vision</a></li>
+                        <li><a href="language-bank.html">Language Bank</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Lingua Nova Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category tag selection
+            const categoryTags = document.querySelectorAll('.category-tag');
+            
+            categoryTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    categoryTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Here you would typically filter the topics based on the selected category
+                    // For this demo, we're just showing the UI interaction
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

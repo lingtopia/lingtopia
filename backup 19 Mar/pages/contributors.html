@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors - Lingua Nova</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&display=swap">
+    <style>
+        /* Page-specific styles */
+        .contributors-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--light-text);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .contributor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .contributor-card {
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .contributor-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--background-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contributor-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        .contributor-info {
+            padding: 1.5rem;
+        }
+        
+        .contributor-name {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contributor-role {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .contributor-bio {
+            margin-bottom: 1rem;
+        }
+        
+        .contributor-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .contributor-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .contributor-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .twitter-contributors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .twitter-contributor {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .twitter-handle {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .twitter-handle:hover {
+            text-decoration: underline;
+        }
+        
+        .page-header {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 992px) {
+            .contributor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .twitter-contributors {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contributor-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .twitter-contributors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .twitter-contributors {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Lingua Nova</h1>
+                <p class="tagline">Crafting the language of tomorrow</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="language-bank.html">Language Bank</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="contributors.html" class="active">Contributors</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="documentation.html">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Contributors</h1>
+            <p class="lead">Meet the dedicated individuals behind the Lingua Nova project.</p>
+        </section>
+
+        <section class="container section-padding">
+            <div class="contributors-tabs">
+                <button class="tab-btn active" data-tab="core-contributors">Core Contributors</button>
+                <button class="tab-btn" data-tab="other-contributors">Other Contributors</button>
+            </div>
+
+            <div class="tab-content active" id="core-contributors">
+                <div class="contributor-grid">
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Dr. Elena Moreno">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Dr. Elena Moreno</h3>
+                            <span class="contributor-role">Project Lead & Linguistic Director</span>
+                            <p class="contributor-bio">Professor of Linguistics with expertise in constructed languages and cross-cultural communication. Founded the Lingua Nova project in 2021.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Dr. Hiroshi Tanaka">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Dr. Hiroshi Tanaka</h3>
+                            <span class="contributor-role">Phonology & Morphology Lead</span>
+                            <p class="contributor-bio">Computational linguist specializing in phonological systems and language acquisition. Designed the sound system and word-formation rules.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Prof. Amara Okafor">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Prof. Amara Okafor</h3>
+                            <span class="contributor-role">Syntax & Semantics Lead</span>
+                            <p class="contributor-bio">Cognitive linguist with research focus on semantic structures and cross-linguistic syntax. Developed the grammatical framework of Lingua Nova.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Dr. Miguel Santos">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Dr. Miguel Santos</h3>
+                            <span class="contributor-role">Lexicography Director</span>
+                            <p class="contributor-bio">Lexicographer and etymologist who oversees vocabulary development and maintains the dictionary database. Expert in Romance and Germanic languages.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Dr. Sarah Chen">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Dr. Sarah Chen</h3>
+                            <span class="contributor-role">Educational Director</span>
+                            <p class="contributor-bio">Applied linguist specializing in language pedagogy. Develops learning materials and teaching methodologies for Lingua Nova.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contributor-card">
+                        <div class="contributor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Alex Novak">
+                        </div>
+                        <div class="contributor-info">
+                            <h3 class="contributor-name">Alex Novak</h3>
+                            <span class="contributor-role">Technology Lead</span>
+                            <p class="contributor-bio">Software engineer and computational linguist who develops digital tools and applications for Lingua Nova, including the translation engine.</p>
+                            <div class="contributor-links">
+                                <a href="#">Website</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="other-contributors">
+                <h3>Community Contributors</h3>
+                <p>We're grateful to our growing community of contributors who help expand and refine Lingua Nova through their expertise, creativity, and dedication.</p>
+                
+                <div class="twitter-contributors">
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@LinguistMaria</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@LanguageGeek</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@SyntaxWizard</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@WordSmith</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@PolyglotPro</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@LexiconBuilder</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@GrammarGuru</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@PhonologyPhD</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@LangTechDev</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@ConlangCreator</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@EtymologyExpert</a>
+                    </div>
+                    <div class="twitter-contributor">
+                        <a href="#" class="twitter-handle">@TranslationPro</a>
+                    </div>
+                </div>
+                
+                <div class="section-padding">
+                    <h3>Become a Contributor</h3>
+                    <p>Interested in contributing to the Lingua Nova project? We welcome linguists, language enthusiasts, educators, developers, and anyone passionate about language innovation.</p>
+                    <a href="community.html" class="btn primary">Join Our Community</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Lingua Nova</h3>
+                    <p>An academic initiative to develop a new language for the modern world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html#vision">Vision</a></li>
+                        <li><a href="language-bank.html">Language Bank</a></li>
+                        <li><a href="documentation.html">Documentation</a></li>
+                        <li><a href="community.html">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="social-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Telegram</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Lingua Nova Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
