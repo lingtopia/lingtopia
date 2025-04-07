@@ -840,4 +840,46 @@ footer {
     .contributor-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Logo styles */
+.header-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 1rem;
+}
+
+.hero-banner {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto 2rem;
+    display: block;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 40px;
+    width: auto;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .header-logo {
+        height: 40px;
+    }
+    
+    .hero-banner {
+        max-width: 100%;
+    }
+    
+    .footer-logo {
+        height: 30px;
+    }
 } 
